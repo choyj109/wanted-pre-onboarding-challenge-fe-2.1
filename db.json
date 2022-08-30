@@ -1,16 +1,22 @@
 {
   "list": [
     {
+      "id": 1,
+      "content": "css",
+      "check": false,
+      "category": "a"
+    },
+    {
       "id": 2,
-      "content": "css"
-    },
-    {
       "content": "목록추가 ",
-      "id": 8
+      "check": false,
+      "category": "b"
     },
     {
+      "id": 3,
       "content": "목록 추가 ",
-      "id": 9
+      "check": false,
+      "category": "c"
     }
   ]
 }

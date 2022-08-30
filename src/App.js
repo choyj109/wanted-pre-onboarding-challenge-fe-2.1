@@ -26,7 +26,13 @@ function App() {
         <h1>{listData.message}</h1>
         <div>
           {listData.data.map((ele) => (
-            <List key={ele.id} id={ele.id} content={ele.content} />
+            <List
+              key={ele.id}
+              id={ele.id}
+              content={ele.content}
+              check={ele.check}
+              category={ele.category}
+            />
           ))}
         </div>
         <div>

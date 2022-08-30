@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getList = createAsyncThunk("GET_LIST", async () => {
   try {
-    const res = await axios.get("http://localhost:5005/list");
+    const res = await axios.get(
+      "https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list"
+    );
     return res.data;
   } catch (err) {
     console.log(err);
@@ -12,7 +14,10 @@ export const getList = createAsyncThunk("GET_LIST", async () => {
 
 export const addList = createAsyncThunk("ADD_LIST", async (newList) => {
   try {
-    const res = await axios.post(`http://localhost:5005/list`, newList);
+    const res = await axios.post(
+      `https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list`,
+      newList
+    );
     return res.data;
   } catch (err) {
     console.log(err);
@@ -21,7 +26,9 @@ export const addList = createAsyncThunk("ADD_LIST", async (newList) => {
 
 export const deleteList = createAsyncThunk("DELETE_LIST", async (id) => {
   try {
-    const res = await axios.delete(`http://localhost:5005/list/${id}`);
+    const res = await axios.delete(
+      `https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list/${id}`
+    );
     return id;
   } catch (err) {
     console.log(err);
@@ -32,9 +39,12 @@ export const updateList = createAsyncThunk(
   "UPDATE_LIST",
   async ({ id, content }) => {
     try {
-      const res = await axios.put(`http://localhost:5005/list/${id}`, {
-        content: content,
-      });
+      const res = await axios.put(
+        `https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list/${id}`,
+        {
+          content: content,
+        }
+      );
       return { id, content };
     } catch (err) {
       console.log(err);
