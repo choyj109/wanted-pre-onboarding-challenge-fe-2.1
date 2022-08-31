@@ -37,15 +37,16 @@ export const deleteList = createAsyncThunk("DELETE_LIST", async (id) => {
 
 export const updateList = createAsyncThunk(
   "UPDATE_LIST",
-  async ({ id, content }) => {
+  async ({ id, content, category }) => {
     try {
       const res = await axios.put(
         `https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list/${id}`,
         {
           content: content,
+          category: category,
         }
       );
-      return { id, content };
+      return { id, content, category };
     } catch (err) {
       console.log(err);
     }

@@ -1,0 +1,57 @@
+.List {
+  width: 30rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 0.2rem;
+  padding: 0rem 1rem 1rem;
+  margin-bottom: 1rem;
+}
+.listBox {
+  width: 100%;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.listBox span {
+  font-size: 0.8rem;
+}
+.content {
+  width: 28em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content h3 {
+  width: 15em;
+  white-space: normal;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.isCheck {
+  color: #bbb;
+  text-decoration: line-through;
+}
+.isCheck ~ button {
+  background-color: #888;
+}
+.finish {
+  color: #333;
+}
+.finish ~ button {
+  background-color: tomato;
+}
+.buttonBox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.buttonBox button {
+  margin-left: 0.2rem;
+}

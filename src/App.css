@@ -1,3 +1,38 @@
 .App {
   text-align: center;
+  color: #333;
+}
+
+button {
+  background: inherit;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+  width: 4.5rem;
+  padding: 0.4rem 0;
+  background-color: cornflowerblue;
+  border-radius: 0.2rem;
+  color: whitesmoke;
+  font-size: 0.3em;
+}
+
+input {
+  outline: none;
+  flex-basis: 67%;
+}
+
+.list {
+  margin-bottom: 2rem;
+}
+
+.addList {
+  margin: 0 auto;
+  width: 32rem;
+  display: flex;
+  justify-content: space-between;
+}
+.addList input {
+  flex-basis: 69%;
 }

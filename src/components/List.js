@@ -2,14 +2,16 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteList, updateList } from "./../store/list/listSlice";
 import { useState } from "react";
+import list from "./List.module.css";
 
-const List = ({ id, content, check, category }) => {
+const List = ({ id, content, category }) => {
   const dispatch = useDispatch();
-  const [updateValue, setUpdateValue] = useState("");
-  const [finish, setFinish] = useState(false);
+  const [updateValue, setUpdateValue] = useState(content);
+  const [isCheck, setisCheck] = useState(false);
+  const [targetValue, setTargetValue] = useState(category);
   const [isEdit, setIsEdit] = useState(false);
-  const [localContent, setLocalContent] = useState(content);
   const toggleEdit = () => setIsEdit(!isEdit);
+  const toggleCheck = () => setisCheck(!isCheck);
 
   const onDelete = (e) => {
     e.preventDefault();
@@ -18,54 +20,77 @@ const List = ({ id, content, check, category }) => {
   const onUpdate = (e) => {
     e.preventDefault();
     if (updateValue) {
-      dispatch(updateList({ id, content: updateValue }));
-      setUpdateValue("");
+      dispatch(updateList({ id, content: updateValue, category }));
+      setUpdateValue(updateValue);
       toggleEdit();
     } else {
-      window.alert("수정할값을 입력하세요");
+      window.alert("내용을 입력해주세요");
     }
   };
   const handleQuitEdit = () => {
     setIsEdit(false);
-    setLocalContent(content);
+    setUpdateValue(content);
+  };
+  const onChange = (e) => {
+    setTargetValue(e.target.value);
+  };
+  const onClick = (e) => {
+    e.preventDefault();
+    toggleCheck();
   };
   return (
-    <div>
-      <div>
-        <h3>{id}</h3>
-        <p>{content}</p>
-        <input type="checkbox" />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={updateValue}
-          onChange={(e) => {
-            setUpdateValue(e.target.value);
-          }}
-        />
+    <div className={list.List}>
+      <div className={list.listBox}>
         {isEdit ? (
-          <>
-            <select name="category">
-              <option value="a">a</option>
-              <option value="b">b</option>
-              <option value="c">c</option>
-            </select>
-            <button onClick={handleQuitEdit}>수정취소</button>
-            <button onClick={onUpdate}>수정완료</button>
-          </>
+          <select
+            required
+            className={list.first}
+            onChange={onChange}
+            value={targetValue}
+          >
+            <option value="a">a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+          </select>
         ) : (
-          <>
-            <span>{category}</span>
-            <button type="button" onClick={toggleEdit}>
-              수정하기
-            </button>
-            <button type="button" onClick={onDelete}>
-              삭제
-            </button>
-          </>
+          <span className={list.first}>{targetValue}</span>
+        )}
+        {isCheck ? (
+          <div className={list.content}>
+            <h3 className={list.isCheck}>{content}</h3>
+            <button onClick={onClick}>취소</button>
+          </div>
+        ) : (
+          <div className={list.content}>
+            <h3 className={list.finish}>{content}</h3>
+            <button onClick={onClick}>완료</button>
+          </div>
         )}
       </div>
+      {isEdit ? (
+        <div className={list.buttonBox}>
+          <input
+            type="text"
+            value={updateValue}
+            onChange={(e) => {
+              setUpdateValue(e.target.value);
+            }}
+            maxLength={20}
+          />
+
+          <button onClick={handleQuitEdit}>수정취소</button>
+          <button onClick={onUpdate}>수정완료</button>
+        </div>
+      ) : (
+        <div className={list.buttonBox}>
+          <button type="button" onClick={toggleEdit}>
+            수정하기
+          </button>
+          <button type="button" onClick={onDelete}>
+            삭제
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -8,15 +8,21 @@ function App() {
   const dispatch = useDispatch();
   const listData = useSelector((state) => state.list);
   const [listValue, setListValue] = useState("");
+  const [cateValue, setCateValue] = useState("");
   useEffect(() => {
     dispatch(getList());
   }, [dispatch]);
+  const onSelect = (e) => {
+    setCateValue(e.target.value);
+  };
   const onCreate = (e) => {
     e.preventDefault();
-    if (listValue) {
-      const newList = { content: listValue };
+    if (listValue && cateValue !== "") {
+      const newList = { content: listValue, category: cateValue };
       dispatch(addList(newList));
       setListValue("");
+    } else {
+      window.alert("카테고리를 선택해주세요");
     }
   };
 
@@ -24,7 +30,7 @@ function App() {
     <div className="App">
       <form onSubmit={onCreate}>
         <h1>{listData.message}</h1>
-        <div>
+        <div className="list">
           {listData.data.map((ele) => (
             <List
               key={ele.id}
@@ -35,11 +41,21 @@ function App() {
             />
           ))}
         </div>
-        <div>
+        <div className="addList">
+          <select required defaultValue="default" onChange={onSelect}>
+            <option value="default" disabled>
+              --선택--
+            </option>
+            <option value="a">a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+          </select>
           <input
             type="text"
             onChange={(e) => setListValue(e.target.value)}
             value={listValue}
+            maxLength={20}
+            required
           />
           <button type="submit">목록추가</button>
         </div>
