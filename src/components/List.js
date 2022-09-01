@@ -16,14 +16,6 @@ const List = ({ id, content, category, hashtags }) => {
   };
   const toggleCheck = () => setisCheck(!isCheck);
 
-  useEffect(() => {
-    setHashValue(
-      hashtags
-        .split(",")
-        .map((word) => (word.startsWith("#") ? word : `#${word}`))
-    );
-  }, [hashtags]);
-
   const onDelete = (e) => {
     e.preventDefault();
     if (window.confirm("삭제하겠습니까?")) {
@@ -38,7 +30,9 @@ const List = ({ id, content, category, hashtags }) => {
           id,
           content: updateValue,
           category: targetValue,
-          hashtags: hashValue,
+          hashtags: hashValue
+            .split(",")
+            .map((word) => (word.startsWith("#") ? word : `#${word}`)),
         })
       );
       setUpdateValue(updateValue);
