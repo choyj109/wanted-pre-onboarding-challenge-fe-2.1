@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { deleteList, updateList } from "./../store/list/listSlice";
 import { useState } from "react";
@@ -15,6 +15,14 @@ const List = ({ id, content, category, hashtags }) => {
     setIsEdit(!isEdit);
   };
   const toggleCheck = () => setisCheck(!isCheck);
+
+  useEffect(() => {
+    setHashValue(
+      hashtags
+        .split(",")
+        .map((word) => (word.startsWith("#") ? word : `#${word}`))
+    );
+  }, [hashtags]);
 
   const onDelete = (e) => {
     e.preventDefault();
@@ -34,7 +42,7 @@ const List = ({ id, content, category, hashtags }) => {
         })
       );
       setUpdateValue(updateValue);
-      setHashValue(hashtags);
+      setHashValue(hashValue);
       toggleEdit();
     } else {
       window.alert("내용을 입력해주세요");
