@@ -7,31 +7,49 @@
   justify-content: space-between;
   border: 1px solid #ddd;
   border-radius: 0.2rem;
-  padding: 0rem 1rem 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
   margin-bottom: 1rem;
 }
+
 .listBox {
   width: 100%;
-  height: 3.5rem;
+  height: 100%;
+}
+
+.category {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
-.listBox span {
-  font-size: 0.8rem;
+.category > input {
+  flex-basis: 90%;
 }
+.input {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.2rem 0 1.2rem;
+}
+.input > input {
+  flex-basis: 90%;
+}
+
+.list,
 .content {
-  width: 28em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
-.content h3 {
-  width: 15em;
-  white-space: normal;
-  text-align: left;
-  font-weight: 600;
-  font-size: 1rem;
+
+.list {
+  margin-bottom: 1.2rem;
+}
+
+.modify {
+  display: flex;
+  justify-content: center;
+  grid-gap: 0.5rem;
 }
 
 .isCheck {
@@ -46,11 +64,6 @@
 }
 .finish ~ button {
   background-color: tomato;
-}
-.buttonBox {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
 }
 .buttonBox button {
   margin-left: 0.2rem;

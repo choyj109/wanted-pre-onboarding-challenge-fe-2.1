@@ -7,7 +7,6 @@ button {
   background: inherit;
   border: 0;
   box-shadow: none;
-  padding: 0;
   overflow: visible;
   cursor: pointer;
   width: 4.5rem;
@@ -18,21 +17,67 @@ button {
   font-size: 0.3em;
 }
 
+h3 {
+  white-space: normal;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+span {
+  font-size: 0.8rem;
+}
+
 input {
   outline: none;
   flex-basis: 67%;
 }
 
-.list {
-  margin-bottom: 2rem;
+label {
+  display: inline-block;
+  cursor: pointer;
+  width: 4.5rem;
+  padding: 0.4rem 0;
+  background-color: #888;
+  border-radius: 0.2rem;
+  color: whitesmoke;
+  font-size: 0.3em;
 }
 
 .addList {
   margin: 0 auto;
-  width: 32rem;
+  width: 30rem;
   display: flex;
   justify-content: space-between;
 }
-.addList input {
-  flex-basis: 69%;
+.addList > input {
+  flex-basis: 30%;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  width: 21rem;
+  grid-gap: 0.2rem;
+}
+
+.search {
+  margin: 1rem auto;
+  width: 30rem;
+  display: flex;
+  justify-content: space-between;
+}
+.search > input {
+  flex-basis: 84%;
+}
+
+.deleteBtn {
+  margin: 0.5rem auto;
+  width: 30rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.deleteBtn button {
+  background-color: tomato;
 }

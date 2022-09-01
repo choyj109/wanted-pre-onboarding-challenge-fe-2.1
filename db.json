@@ -4,19 +4,22 @@
       "id": 1,
       "content": "css",
       "check": false,
-      "category": "a"
+      "category": "a",
+      "hashtags": "a,b"
     },
     {
       "id": 2,
       "content": "목록추가 ",
       "check": false,
-      "category": "b"
+      "category": "b",
+      "hashtags": "a,b"
     },
     {
       "id": 3,
       "content": "목록 추가 ",
       "check": false,
-      "category": "c"
+      "category": "c",
+      "hashtags": "a,b"
     }
   ]
 }

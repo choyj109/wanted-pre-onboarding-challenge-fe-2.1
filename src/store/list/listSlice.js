@@ -37,21 +37,33 @@ export const deleteList = createAsyncThunk("DELETE_LIST", async (id) => {
 
 export const updateList = createAsyncThunk(
   "UPDATE_LIST",
-  async ({ id, content, category }) => {
+  async ({ id, content, category, hashtags }) => {
     try {
       const res = await axios.put(
         `https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list/${id}`,
         {
           content: content,
           category: category,
+          hashtags: hashtags,
         }
       );
-      return { id, content, category };
+      return { id, content, category, hashtags };
     } catch (err) {
       console.log(err);
     }
   }
 );
+
+export const deleteAllList = createAsyncThunk("DELETEALL_LIST", async () => {
+  try {
+    const res = await axios.get(
+      `https://my-json-server.typicode.com/choyj109/wanted-pre-onboarding-challenge-fe-2/list`
+    );
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 const listSlice = createSlice({
   name: "list",
@@ -72,6 +84,9 @@ const listSlice = createSlice({
     builder.addCase(updateList.fulfilled, (state, action) => {
       const idx = state.data.findIndex((ele) => ele.id === action.payload.id);
       state.data.splice(idx, 1, action.payload);
+    });
+    builder.addCase(deleteAllList.fulfilled, (state) => {
+      state.data = [];
     });
   },
 });
