@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/wanted-pre-onboarding-challenge-fe-2/static/css/main.04b0ac1c.css",
+    "main.js": "/wanted-pre-onboarding-challenge-fe-2/static/js/main.9d594c91.js",
+    "static/js/787.1c982649.chunk.js": "/wanted-pre-onboarding-challenge-fe-2/static/js/787.1c982649.chunk.js",
+    "index.html": "/wanted-pre-onboarding-challenge-fe-2/index.html",
+    "main.04b0ac1c.css.map": "/wanted-pre-onboarding-challenge-fe-2/static/css/main.04b0ac1c.css.map",
+    "main.9d594c91.js.map": "/wanted-pre-onboarding-challenge-fe-2/static/js/main.9d594c91.js.map",
+    "787.1c982649.chunk.js.map": "/wanted-pre-onboarding-challenge-fe-2/static/js/787.1c982649.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04b0ac1c.css",
+    "static/js/main.9d594c91.js"
+  ]
+}
