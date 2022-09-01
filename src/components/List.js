@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteList, updateList } from "./../store/list/listSlice";
 import { useState } from "react";
@@ -30,9 +30,7 @@ const List = ({ id, content, category, hashtags }) => {
           id,
           content: updateValue,
           category: targetValue,
-          hashtags: hashValue
-            .split(",")
-            .map((word) => (word.startsWith("#") ? word : `#${word}`)),
+          hashtags: hashValue,
         })
       );
       setUpdateValue(updateValue);
@@ -45,7 +43,7 @@ const List = ({ id, content, category, hashtags }) => {
   const handleQuitEdit = () => {
     setIsEdit(false);
     setUpdateValue(content);
-    setHashValue(hashtags);
+    setHashValue(hashValue);
   };
   const onChange = (e) => {
     e.preventDefault();
@@ -74,7 +72,11 @@ const List = ({ id, content, category, hashtags }) => {
               type="text"
               value={hashValue}
               onChange={(e) => {
-                setHashValue(e.target.value);
+                setHashValue(
+                  e.target.value
+                    .split(",")
+                    .map((word) => (word.startsWith("#") ? word : `#${word}`))
+                );
               }}
               placeholder="해시태그"
             />
